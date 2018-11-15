@@ -1,0 +1,109 @@
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <title>CHANGELOG.md</title>
+      </head>
+      <body>
+        <h1 id="changelog">Changelog</h1>
+<h2 id="0-6-4">0.6.4</h2>
+<ul>
+<li>Expose EventEmitter and _ on Leap</li>
+<li>Fixes #190 Cannot pass in Leap.loop options without callback</li>
+<li>Fix #194: Add frameEnd event dumper example</li>
+<li>loopWhileDisconnected now defaults to true</li>
+<li>FrameEnd Looping now begins even before (or without) controller connection</li>
+</ul>
+<h2 id="0-6-3">0.6.3</h2>
+<ul>
+<li>Add Optimize HMD flag for Controller</li>
+</ul>
+<h2 id="0-6-2">0.6.2</h2>
+<ul>
+<li>Add support for Secure Websocket connection over https:// pages for Leap Software &gt;= 2.1.0</li>
+<li>Add events fore beforeFrameCreated and afterFrameCreated (allowing low-level frame access)</li>
+</ul>
+<h2 id="0-6-1">0.6.1</h2>
+<ul>
+<li>Add arm bone for Leap Software &gt;= 2.0.3</li>
+<li>Fix issue where initial frame can be invalid</li>
+<li>Allow Leap.loop to be called with no arguments</li>
+</ul>
+<h2 id="0-6-0">0.6.0</h2>
+<ul>
+<li>Bones API: finger.metacarpal, proximal, intermediate, distal, each with .prevJoin and .nextJoint</li>
+<li>Fix issue where hand options could not be used with loop + loop options</li>
+<li>console.warn plugin duplication, rather than throwing an error.</li>
+<li>Allow prototypical extension of Fingers in plugins</li>
+</ul>
+<h2 id="0-6-0-beta2">0.6.0-beta2</h2>
+<ul>
+<li>Added convenience <code>hand</code> event for controllers.  Add <code>hand</code> and <code>frame</code> as callback options for Leap.loop.</li>
+<li>Merge in LeapJS 0.5.0 - device events (see below)</li>
+<li>Fingers on hands will now always be ordered correctly.</li>
+<li>Upgrade gl-matrix to 2.2.1</li>
+</ul>
+<h2 id="0-6-0-beta1">0.6.0-beta1</h2>
+<ul>
+<li>Hand:<ul>
+<li>type (&#39;left&#39; or &#39;right&#39;),</li>
+<li>grabStrength (number 0-1) - 1 being fully closed</li>
+<li>pinchStrength (number 0-1) - 1 being fully closed, between the thumb and any finger</li>
+<li>confidence (number 0-1) (a measure of hand data accuracy, 1 being good)</li>
+</ul>
+</li>
+<li>Finger:<ul>
+<li>mcp, pip, dip, and tip positions (all array vec3) - joint positions of the finger (see source/docs4)</li>
+<li>extended (boolean) - True for a straight finger, false if the finger is curled</li>
+<li>Moved to own class</li>
+</ul>
+</li>
+<li>Add convenience method controller.connected()</li>
+</ul>
+<h2 id="0-5-0">0.5.0</h2>
+<ul>
+<li>[feature] Support protocol v5: better device info when connected to clients with Leap Service version 1.2.0 or above.</li>
+<li>[feature] Added streamingStarted, streamingStopped, deviceStreaming, and deviceStopped events</li>
+<li>[feature] Device events now include device info with the following fields:<ul>
+<li>attached [boolean]</li>
+<li>streaming [boolean]</li>
+<li>id [string]</li>
+<li>type [string], on of: &quot;peripheral&quot;, &quot;keyboard&quot;, &quot;laptop&quot;, &quot;unknown&quot;, or &quot;unrecognized&quot;.</li>
+</ul>
+</li>
+<li>[feature] Add convenience methods <code>controller.connected()</code> and <code>controller.streaming()</code></li>
+<li>[bugfix] Focus state is now cleared after disconnection</li>
+<li>[behavior change] Leap.loop no longer uses all plugins by default.</li>
+<li>[feature] serviceVersion will now be available when connected to Leap Service v1.3.0 or above</li>
+<li>[bugfix] Fix issue where any call to disconnect would automatically reconnect</li>
+<li>[bugfix] Send focus state more quickly when connecting</li>
+<li>[bugfix] Fix issue where focus changes while disconnected would cause focus not to be updated upon reconnection</li>
+</ul>
+<h2 id="0-4-3">0.4.3</h2>
+<ul>
+<li>Added a new controller option <code>loopWhileDisconnected</code> which defaults to true (legacy behavior) and can be set
+to false.  This is an optimization which allows the loop to be turned off when the leap is not connected.
+-- When set to false, Animation Frames are no longer be sent after disconnect
+-- When set to false, Animation Frames are no longer sent if new device frame data is not available</li>
+<li>suppressAnimationLoop, when set to false in node, will cause node to try and use the animation loop, and fail.</li>
+<li>Fixed #159 where setBackground would not apply when reconnecting a controller.</li>
+</ul>
+<h2 id="0-4-2-2014-03-12">0.4.2 - 2014-03-12</h2>
+<ul>
+<li>Allow controller.use to be called idempotently</li>
+<li>Fix issue where requestAnimationFrame would not be used in Chrome</li>
+<li>Exclude node code from browser js</li>
+<li>The plugin pipeline now runs on animationFrames rather than deviceFrames when in the browser.</li>
+</ul>
+<p>##0.4.1 - 2014-02-11</p>
+<ul>
+<li>Allow controller.use to accept a factory directly (node support)</li>
+</ul>
+<p>##0.4.0 - 2014-01-30</p>
+<ul>
+<li>Started changelog</li>
+<li>Added plugins</li>
+<li>Allow Controller method chaining</li>
+</ul>
+
+      </body>
+    </html>
